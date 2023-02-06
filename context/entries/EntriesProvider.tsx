@@ -24,7 +24,7 @@ const Entries_Initial_State:EntriesState={
         },
         {
             _id:uuidv4(),
-            description:'Lorem lola bladasdasd',
+            description:'finished lola bladasdasd',
             status:'finished',
             createdAt: Date.now() - 100000
         }
