@@ -4,6 +4,9 @@ import { Entry } from '../../interfaces/entries';
 
 export interface ContextProps{
 entries:Entry[] ;
+
+//Methods
+addNewEntry: (description: string) => void
 }
 
 
