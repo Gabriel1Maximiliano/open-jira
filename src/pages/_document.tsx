@@ -1,32 +1,20 @@
-import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 
-class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-   
+import { Html, Head, Main, NextScript } from 'next/document'
 
-    // Run the parent `getInitialProps`, it now includes the custom `renderPage`
-    const initialProps = await Document.getInitialProps(ctx)
+export default function Document() {
+  return (
+    <Html>
+      <Head >
+      <link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+/>
 
-    return initialProps
-  }
-
-  render() {
-    return (
-      <Html>
-        <Head >
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
-
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    )
-  }
+      </Head>
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  )
 }
-
-export default MyDocument
