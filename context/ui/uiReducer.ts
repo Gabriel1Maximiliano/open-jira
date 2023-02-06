@@ -9,12 +9,12 @@ export const uiReducer = ( state:UIState,action: UITypeAtion ):UIState => {
     case '[UI]-Open-Sidebar':
         return {
             ...state,
-            sideMenuOpen:true
+            IsSideMenuOpen:true
 }
 case '[UI]-Close-Sidebar':
         return {
             ...state,
-            sideMenuOpen:false
+            IsSideMenuOpen:false
 }
 
 

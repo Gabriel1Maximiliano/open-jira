@@ -11,13 +11,13 @@ const menuItems :string[]=['Inbox','Starred','Send Email','Drafts'];
 
 export const Sidebar = () => {
 
-  const { IsSideMenuOpen } = useContext( UIContext );
+  const { closeSideMenu,IsSideMenuOpen } = useContext( UIContext );
 
   return (
  <Drawer
  anchor="left"
  open={ IsSideMenuOpen }
- onClose={ ()=>console.log('cerrando') }
+ onClose={ ()=>closeSideMenu() }
  >
   <Box sx={{ padding:'5px' }} >
     <Typography variant='h4'>Menu</Typography>

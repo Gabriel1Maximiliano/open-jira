@@ -3,7 +3,7 @@ import { createContext } from 'react';
 
 export interface ContextProps{
 IsSideMenuOpen: boolean;
-
+IsSideMenuClose:boolean;
 //methods
 openSideMenu: () => void
 closeSideMenu: () => void
