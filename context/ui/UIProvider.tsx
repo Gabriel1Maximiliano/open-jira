@@ -4,12 +4,16 @@ import { UIContext,uiReducer } from './';
 
 export interface UIState {
     IsSideMenuOpen:boolean;
-    IsSideMenuClose:boolean,
+    IsSideMenuClose:boolean;
+    isAddingEntry:boolean;
+    isDragging:boolean;
 }
 
 const UI_Initial_State:UIState={
     IsSideMenuOpen:false,
     IsSideMenuClose:false,
+    isAddingEntry:false,
+    isDragging:false
 
 }
 
@@ -19,20 +23,33 @@ export const UIProvider:FC<any> =({ children }):any=>{
 
     const openSideMenu = () => {
         
-        dispatch({type:'[UI]-Open-Sidebar'})
+        dispatch({type:'[UI]-Open-Sidebar'});
     }
     const closeSideMenu = ()=>{
-        dispatch({type:'[UI]-Close-Sidebar'})
+        dispatch({type:'[UI]-Close-Sidebar'});
+    }
+    const setIsAddingEntry =(isAdding:boolean)=>{
+        dispatch( {type:'[UI]-Set-isAddingEntry',payload:isAdding} );
+    }
+    const startDragging=()=>{
+        dispatch( {type:'[UI]-Start-Dragging'} );
+
+    }
+    const endDragging=()=>{
+        dispatch( {type:'[UI]-End-Dragging'} );
+
     }
 
 return(
  <UIContext.Provider value={{
-    //states
-    IsSideMenuOpen:state.IsSideMenuOpen,
-    IsSideMenuClose:state. IsSideMenuClose,
+    ...state,
     //methods
     openSideMenu,
-    closeSideMenu
+    closeSideMenu,
+    setIsAddingEntry,
+
+    startDragging,
+    endDragging
  }} >
     { children }
  </UIContext.Provider>

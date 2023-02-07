@@ -2,12 +2,13 @@ import { Box, Button, TextField } from "@mui/material"
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';import { ChangeEvent, useState, useContext } from 'react';
 import { EntriesContext } from "context/entries";
-;
+import { UIContext } from '../../context/ui/UIContext';
+
 export const NewEntry = () => {
 
     const { addNewEntry } = useContext( EntriesContext )
 
-   const [isAdding,setIsAdding] = useState( false );
+   const { isAddingEntry,setIsAddingEntry }=useContext( UIContext );
 
    const [inputValue,setInpuntValue] = useState( '' );
 
@@ -22,7 +23,7 @@ export const NewEntry = () => {
     
     addNewEntry(inputValue);
     setIsTouched( false );
-    setIsAdding( false );
+    setIsAddingEntry( false );
     setInpuntValue( '' );
    }
 
@@ -33,7 +34,7 @@ export const NewEntry = () => {
     <Box sx={{marginBottom:2,padding:1}} >
 
         {
-            isAdding ?<><TextField 
+            isAddingEntry ?<><TextField 
             fullWidth 
             sx={{ 
                 marginTop:2,
@@ -52,20 +53,22 @@ export const NewEntry = () => {
            
             <Button 
             variant="outlined"
-            color="secondary"
+            color="success"
             endIcon={ <SaveOutlinedIcon />}
             onClick={ onSave }
              >Guardar</Button>
            
             <Button 
             variant="text"
-            onClick={()=>setIsAdding(false)}
+            color="success"
+            onClick={()=>setIsAddingEntry(false)}
              >Cancelar</Button>
             </Box></>:<> <Button
     startIcon={ <AddCircleOutlineOutlinedIcon/> }
     fullWidth
+    color="success"
     variant="outlined"
-    onClick={()=>setIsAdding(true)}
+    onClick={()=>setIsAddingEntry(true)}
     >
         Agregar tarea
     </Button></>
