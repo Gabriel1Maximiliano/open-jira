@@ -31,17 +31,17 @@ export const connect = async()=>{
     }
 
 
-    await mongoose.connect('...');
+    await mongoose.connect( process.env.MONGO_URL || '' );
 
     mongooConnection.isConnected =1;
-    console.log('Connected to MongoDb','..')
+    console.log('Connected to MongoDb',process.env.MONGO_UR)
 
 
 } 
 
 export const disconnect = async() =>{
 
-    if( mongooConnection.isConnected !== 0 ) return;
+    if( mongooConnection.isConnected === 0 ) return;
 
   await mongoose.disconnect();
   console.log('Disconeted from MongoDb');
