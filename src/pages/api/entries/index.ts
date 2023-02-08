@@ -12,9 +12,8 @@ export default function handler (req: NextApiRequest, res: NextApiResponse<Data>
         switch (req.method) {
             case 'GET':
                 return getEntries( res );
-                
-                break;
-        
+            case 'POST':
+                return  postEntries( req, res );    
             default:
                 return res.status(400).json({ message:'End point does not exist' });
         }
@@ -31,4 +30,35 @@ const getEntries= async ( res:NextApiResponse<Data> )=>{
 
     res.status(200).json(entries);
 
+}
+
+const postEntries = async ( req:NextApiRequest, res:NextApiResponse<Data> ) =>{
+
+    const { description,createdAt } = req.body;
+   
+
+    let d = Date.now()
+    const newEntry = new Entry({
+        description,
+        createdAt:d
+    });
+  
+
+    try {
+
+        await db.connect();
+
+        await newEntry.save();
+        await db.disconnect();
+
+       return res.status(201).json( newEntry );
+
+        
+    } catch (error) {
+        await db.disconnect();
+        console.log(error);
+        return res.status(500).json({message:'Somthing went wrong, check the console service'})
+    }
+
+    
 }
