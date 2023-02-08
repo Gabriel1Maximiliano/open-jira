@@ -10,24 +10,7 @@ export interface EntriesState {
 
 const Entries_Initial_State:EntriesState={
     entries:[
-        {
-            _id:uuidv4(),
-            description:'pending pepe bladasdasd',
-            status:'pending',
-            createdAt: Date.now()
-        },
-        {
-            _id:uuidv4(),
-            description:'in-progress pepe bladasdasd',
-            status:'in-progress',
-            createdAt: Date.now() - 1000000
-        },
-        {
-            _id:uuidv4(),
-            description:'finished lola bladasdasd',
-            status:'finished',
-            createdAt: Date.now() - 100000
-        }
+       
     ]}
 
 export const EntriesProvider:FC<any> =({ children }):any=>{
