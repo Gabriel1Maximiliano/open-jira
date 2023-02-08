@@ -14,6 +14,8 @@ export default function handler (req: NextApiRequest, res: NextApiResponse<Data>
                 return getEntries( res );
             case 'POST':
                 return  postEntries( req, res );    
+            case 'PUT':
+                return  putEntries( req, res );    
             default:
                 return res.status(400).json({ message:'End point does not exist' });
         }
@@ -34,7 +36,7 @@ const getEntries= async ( res:NextApiResponse<Data> )=>{
 
 const postEntries = async ( req:NextApiRequest, res:NextApiResponse<Data> ) =>{
 
-    const { description,createdAt } = req.body;
+    const { description } = req.body;
    
 
     let d = Date.now()
@@ -62,3 +64,12 @@ const postEntries = async ( req:NextApiRequest, res:NextApiResponse<Data> ) =>{
 
     
 }
+
+const putEntries = async ( req:NextApiRequest, res:NextApiResponse<Data> )=>{
+
+    const {} = req.body;
+
+
+
+}
+
