@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import mongoose from 'mongoose';
-import { db } from 'database';
 import { Entry } from 'models';
 import { IEntry } from '../../../../models/Entry';
+import { db, dbEntries } from 'database';
 
 type Data = 
 |{ message: string}
@@ -33,7 +33,7 @@ const updateEntry = async (req:NextApiRequest, res:NextApiResponse<Data>)=>{
 
     const { id } = req.query;
 
-    await db.connect();
+   
 
     const entryToUpdate = await Entry.findById( id ) ;
 
