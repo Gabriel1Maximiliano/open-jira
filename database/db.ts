@@ -34,7 +34,7 @@ export const connect = async()=>{
     await mongoose.connect( process.env.MONGO_URL || '' );
 
     mongooConnection.isConnected =1;
-    console.log('Connected to MongoDb',process.env.MONGO_UR)
+    console.log('Connected to MongoDb',process.env.MONGO_URL)
 
 
 } 
