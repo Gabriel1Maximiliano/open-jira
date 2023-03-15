@@ -5,7 +5,7 @@ import { Layout } from 'components/layouts';
 import { EntryList } from 'context/ui';
 import { NewEntry } from 'components/ui';
 
-
+console.log(process.env)
 const inter = Inter({ subsets: ['latin'] })
 
 export default function HomePage() {
